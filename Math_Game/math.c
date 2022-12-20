@@ -23,6 +23,36 @@ int random_number() {
 	return random_1, random_2;
 }
 
+int cooorrreect_answer() {
+	//정답을 뽑는 부분
+	switch (op) {
+	case 0:
+		correct_answer = random_1 + random_2;
+		break;
+	case 1:
+		correct_answer = random_1 - random_2;
+		break;
+	case 2:
+		correct_answer = random_1 * random_2;
+		break;
+	case 3:
+		correct_answer = floor(random_1 / random_2); //나머지 버리기
+		break;
+	default:
+		break;
+	}
+}
+
+void check() {
+	//답이 맞는지 확인하는 부분
+	if (answer == correct_answer) {
+		printf("Correct!");
+	}
+	else {
+		printf("Wrong! Answer is (%d)", correct_answer);
+	}
+}
+
 int main() {
 
 	for (int i = 1; i <= 10; i++) {
@@ -32,31 +62,8 @@ int main() {
 
 		printf("[%d/10] %d %c %d = ", i, random_1, four[op], random_2);
 		scanf_s("%d", &answer);
+		cooorrreect_answer();
 
-		//정답을 뽑는 부분
-		switch (op) {
-			case 0:
-				correct_answer = random_1 + random_2;
-				break;
-			case 1:
-				correct_answer = random_1 - random_2;
-				break;
-			case 2:
-				correct_answer = random_1 * random_2;
-				break;
-			case 3:
-				correct_answer = floor(random_1 / random_2); //나머지 버리기
-				break;
-			default:
-				break;
-		}
-
-		//답이 맞는지 확인하는 부분
-		if (answer == correct_answer) {
-			printf("Correct!");
-		}
-		else {
-			printf("Wrong! Answer is (%d)", correct_answer);
-		}
+		check();
 	}
 }
